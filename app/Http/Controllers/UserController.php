@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\UserModel;
-use App\Models\QuizModel;
-use App\Models\UserModel1;
+use App\Models\Siswa;
+use App\Models\Kuis;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Materi;
 use App\Rules\LoginCheck;
 use Illuminate\Support\Facades\Session;
 
@@ -17,20 +17,21 @@ class UserController extends Controller
         return view('admin.login');
     }
 
-    function dasboard()
+    function dashboard()
     {
-        $jumlahQuiz = QuizModel::count();
-        $jumlahSiswa = UserModel1::count();
-        return view('admin.dashboard', compact('jumlahSiswa', 'jumlahQuiz'));
+        $jumlahQuiz = Kuis::count();
+        $jumlahMateri = Materi::count();
+        $jumlahSiswa = Siswa::count();
+        return view('admin.dashboard', compact('jumlahSiswa', 'jumlahMateri', 'jumlahQuiz'));
     }
 
     function tampilData()
     {
         // return view('User.dataUser');
-        $users = UserModel1::all();
+        $users = Siswa::all();
         return view('User.dataUser', compact('users'));
     }
-    function tambahData()
+    function tambahUser()
     {
         return view('User.tambahUser');
     }
@@ -53,14 +54,14 @@ class UserController extends Controller
             'nisn' => $request->nisn,
         ];
 
-        UserModel1::insert($dataInsert);
+        Siswa::insert($dataInsert);
 
         return redirect()->route('dataSiswa')->with('success', 'Pendaftaran Berhasil');
     }
 
     function editUser($id)
     {
-        $users = UserModel1::where('id', $id)->first();
+        $users = Siswa::where('id', $id)->first();
         $data = [
             'user' => $users
         ];
@@ -77,13 +78,13 @@ class UserController extends Controller
             'nisn' => $nisn,
         ];
 
-        UserModel1::where('id', $id)->update($dataUpdate);
+        Siswa::where('id', $id)->update($dataUpdate);
         return redirect()->route('dataSiswa')->with('success', 'Data Berhasil Diubah');
     }
 
     function deleteUser($id)
     {
-        $user = UserModel1::findOrFail($id);
+        $user = Siswa::findOrFail($id);
         $user->delete();
 
         return redirect()->route('dataSiswa')->with('success', 'Data Berhasil Dihapus');

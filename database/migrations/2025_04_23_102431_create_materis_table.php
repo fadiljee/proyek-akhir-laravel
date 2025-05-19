@@ -23,8 +23,15 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('materis');
-    }
+    public function down()
+{
+    // Hapus foreign key di tabel kuis
+    Schema::table('kuis', function (Blueprint $table) {
+        $table->dropForeign(['materi_id']); // Ganti dengan nama kolom yang mengacu pada materi_id
+    });
+
+    // Sekarang hapus tabel materis
+    Schema::dropIfExists('materis');
+}
+
 };

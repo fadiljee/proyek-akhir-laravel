@@ -32,7 +32,7 @@
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 
-                <a href="{{ route('formregister')}}" class="btn btn-success"><i class="nav-icon fas fa-user-plus"></i>Tambah</a>
+                <a href="{{ route('tambahSiswa')}}" class="btn btn-success"><i class="nav-icon fas fa-user-plus"></i>Tambah</a>
                 <thead>
                   <tr>
                     <th>Nama</th>

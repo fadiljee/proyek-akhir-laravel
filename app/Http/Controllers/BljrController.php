@@ -8,22 +8,14 @@ use App\Models\QuizModel;
 use App\Models\UserModel1;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\LoginCheck;
+use App\Models\Kuis;
 use Illuminate\Support\Facades\Session;
 
 class BljrController extends Controller
 {
-    //
-    function tampil()
+    function dashboard()
     {
-        return view('home.cobaview');
-    }
-    function tampil2()
-    {
-        return "hellooooooooo";
-    }
-    function tampiladmin()
-    {
-        $jumlahQuiz = QuizModel::count();
+        $jumlahQuiz = Kuis::count();
         $jumlahSiswa = UserModel1::count();
         return view('admin.dashboard', compact('jumlahSiswa', 'jumlahQuiz'));
     }
@@ -31,34 +23,11 @@ class BljrController extends Controller
     {
         return view('admin.login');
     }
-    function listbarang()
-    {
-        return view('admin.databarang');
-    }
 
-    function fregister()
-    {
-        return view('admin.formregister');
-    }
-   
-    // function calculate(Request $request)
-    // {
-    //     $request->validate([
-    //         'angka1' => 'required|numeric',
-    //         'angka2' => 'required|numeric',
-    //     ]);
-
-    //     $number1 = $request->input('angka1');
-    //     $number2 = $request->input('angka2');
-
-    //     $result = $number1 + $number2;
-    //     return view('admin.formhitung', compact('result', 'number1', 'number2'));
-    // }
-
-    function fhitung()
+    function data()
     {
         $users = UserModel1::all();
-        return view('admin.formhitung', compact('users'));
+        return view('user.tambahUser', compact('users'));
     }
 
     function daftar(Request $request)
@@ -76,7 +45,7 @@ class BljrController extends Controller
 
         UserModel1::insert($dataInsert);
 
-        return redirect()->route('formhitung')->with('success', 'Pendaftaran Berhasil');
+        return redirect()->route('dataSiswa')->with('success', 'Pendaftaran Berhasil');
     }
 
     function editUser($id)

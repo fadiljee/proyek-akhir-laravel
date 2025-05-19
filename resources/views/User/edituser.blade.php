@@ -14,7 +14,7 @@
               <h3 class="card-title">FORM EDIT</h3>
             </div>
 
-            <form action="{{ route('updatekuis', $user->id) }}" method="POST">
+            <form action="{{ route('updateuser', $user->id) }}" method="POST">
               <div class="card-body">
                 @csrf
                 <div class="form-group">

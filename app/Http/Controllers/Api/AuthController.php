@@ -13,6 +13,7 @@ use App\Models\UserModel1;
 use Illuminate\Http\Request;
 use App\Models\Materi;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Kuis;
 
 class AuthController extends Controller
 {
@@ -76,5 +77,30 @@ class AuthController extends Controller
 
     return response()->json($materis);
 }
+
+
+    //kuis
+    public function kuis()
+    {
+        // Mengambil semua kuis dan relasi dengan materi
+        $kuis = Kuis::with('materi')->get();
+        
+        return response()->json(['kuis' => $kuis]);
+    }
+
+    // Menampilkan kuis berdasarkan ID
+    public function kuisShow($id)
+    {
+        // Mengambil kuis berdasarkan ID dan relasi dengan materi
+        $kuis = Kuis::with('materi')->where('materi_id', $id)->get();
+    
+        if ($kuis->isEmpty()) {
+            return response()->json(['message' => 'Kuis tidak ditemukan'], 404);
+        }
+    
+        return response()->json([
+            'kuis' => $kuis
+        ]);
+    }
 
 }

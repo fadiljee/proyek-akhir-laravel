@@ -12,8 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item"><a href="#"></a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,9 +30,11 @@
             
             <div class="small-box bg-info">
               <div class="inner">
+                <a href="{{route('dataSiswa')}}" class="text-white">
                 <h3>{{ $jumlahSiswa }} </h3>
 
                 <p>Jumlah Siswa</p>
+                </a>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -45,9 +46,29 @@
             
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $jumlahQuiz }} </h3>
+                <a href="{{route('kuis')}}" class="text-white">
 
-                <p>Jumlah Quiz</p>
+                  <h3>{{ $jumlahMateri }} </h3>
+                  
+                  <p >Jumlah Materi</p>
+                </a>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <a href="{{route('kuis')}}" class="text-white">
+
+                  <h3>{{ $jumlahQuiz }} </h3>
+                  
+                  <p >Jumlah Quiz</p>
+                </a>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
