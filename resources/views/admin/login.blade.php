@@ -14,14 +14,94 @@
   <link rel="stylesheet" href="{{asset('template/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('template/dist/css/adminlte.min.css')}}">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #444552, #a3a4af);
+      font-family: 'Source Sans Pro', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-logo a {
+      font-size: 32px;
+      color: #767a8d;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .login-box-msg {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .input-group-text {
+      background-color: #f4f6f9;
+      border-color: #ccc;
+    }
+
+    .form-control {
+      border-radius: 4px;
+      box-shadow: none;
+      height: 50px;
+    }
+
+    .btn-primary {
+      background-color: #3f55d7;
+      border-color: #3f55d7;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #344ccf;
+    }
+
+    .alert-danger {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .alert-danger ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .alert-danger li {
+      list-style-type: none;
+    }
+
+    .footer-text {
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
-<body class="hold-transition login-page">
+<body>
   <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b></a>
+      <a href=""><b>Admin</b></a>
     </div>
-    <!-- /.login-logo -->
+
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Silahkan Login</p>
@@ -30,63 +110,46 @@
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $errors)
-              <li>{{$errors}}</li>
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
               @endforeach
             </ul>
           </div>
-
           @endif
+
           <div class="input-group mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Email">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
           </div>
+
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
           </div>
+
           <div class="row">
-            <!-- <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">
-                  Remember Me
-                </label>
-              </div>
-            </div> -->
-            <!-- /.col -->
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
-            <!-- /.col -->
           </div>
         </form>
 
-        <!-- <p class="mb-1">
-          <a href="forgot-password.html">I forgot my password</a>
-        </p>
-        <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
-        </p> -->
       </div>
-      <!-- /.login-card-body -->
     </div>
   </div>
-  <!-- /.login-box -->
 
-  <!-- jQuery -->
-  <script src="{{asset('template/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('template/dist/js/adminlte.min.js"></script>
+  <script src="{{asset('template/plugins/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('template/dist/js/adminlte.min.js')}}"></script>
 </body>
+
 </html>

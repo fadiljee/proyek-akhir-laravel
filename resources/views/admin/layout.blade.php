@@ -219,14 +219,15 @@
                </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-bars"></i> <!-- Ikon hamburger -->
                 <p>
-                  Menu
-                  <i class="right fas fa-angle-left"></i>
+                    Menu
+                    <i class="right fas fa-angle-left"></i>
                 </p>
-              </a>
+                </a>
+
               <ul class="nav nav-treeview">
-               
+
                 <li class="nav-item">
                   <a href="{{route('dataSiswa')}}" class="nav-link {{ Request::routeIs('dataSiswa') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
@@ -267,6 +268,22 @@
                     </p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('hasil-kuis')}}" class="nav-link {{ Request::routeIs('hasil.kuis') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-clipboard"></i>
+                    <p>
+                      HASIL QUIZ
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('leaderboard')}}" class="nav-link {{ Request::routeIs('leaderboard') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-trophy"></i>
+                    <p>
+                      RANKING SISWA
+                    </p>
+                  </a>
+                </li>
                 {{-- <li class="nav-item">
                   <a href="{{route('databarang')}}" class="nav-link {{ Request::routeIs('databarang') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-plus"></i>
@@ -275,17 +292,16 @@
                     </p>
                   </a>
                 </li> --}}
-                
+
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{route('logout')}}" class="nav-link {{ Request::routeIs('datagempa') }}">
-                <i class="nav-icon fas fa-solid fa-arrow-right"></i>
-                <p>
-                  Logout
-                </p>
-              </a>
+            <a href="{{ route('logout') }}" class="nav-link {{ Request::routeIs('datagempa') }}">
+                <i class="nav-icon fas fa-sign-out-alt"></i> <!-- Menggunakan ikon sign-out -->
+                <p>Log-out</p>
+            </a>
             </li>
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -298,7 +314,7 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <strong>SMP NEGERI 1 MERAWANG</strong>
-      
+
     </footer>
 
     <!-- Control Sidebar -->

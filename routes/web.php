@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\quizController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Middleware\LoginCheck;
 use App\Http\Middleware\LoggedIn;
 
@@ -33,9 +34,9 @@ Route::middleware(LoggedIn::class)->group(function () {
     Route::get('/tambahMateri', [MateriController::class, 'create'])->name('tambahMateri');
     Route::post('/prosestambah', [MateriController::class, 'store'])->name('prosestambah');
     Route::get('/editMateri/{id}', [MateriController::class, 'edit'])->name('materiedit');
-    Route::post('/updateMateri/{id}', [MateriController::class, 'update'])->name('updatemateri');
+    Route::PUT('/updateMateri/{id}', [MateriController::class, 'update'])->name('updatemateri');
     Route::delete('/materidelete/{id}', [MateriController::class, 'destroy'])->name('materidelete');
-    
+
     //kuis
     Route::get('/kuis', [quizController::class, 'index'])->name('kuis');
     Route::get('/tambahKuis', [quizController::class, 'create'])->name('tambahkuis');
@@ -43,5 +44,15 @@ Route::middleware(LoggedIn::class)->group(function () {
     Route::get('/editKuis/{id}', [quizController::class, 'edit'])->name('kuisedit');
     Route::post('/updateKuis/{id}', [quizController::class, 'update'])->name('updatekuis');
     Route::delete('/kuisdelete/{id}', [quizController::class, 'destroy'])->name('kuisdelete');
+
+    // Hasil Kuis
+    Route::get('/hasil-kuis', [quizController::class, 'hasil'])->name('hasil-kuis');
+    Route::post('/hasil-kuis', [quizController::class, 'storeHasilKuis'])->name('hasil-kuis.store');
+
+    // leaderboard
+    Route::get('/leaderboard', [quizController::class, 'showLeaderboard'])->name('leaderboard');
+
+
+
 
 });

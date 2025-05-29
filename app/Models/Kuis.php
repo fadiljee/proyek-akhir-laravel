@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Kuis extends Model
 {
+    use HasApiTokens;
     use HasFactory;
 
     protected $fillable = [
@@ -16,6 +19,7 @@ class Kuis extends Model
         'jawaban_c',
         'jawaban_d',
         'jawaban_benar',
+        'nilai',
         'materi_id',
     ];
 

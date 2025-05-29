@@ -9,33 +9,41 @@
         <!-- left column -->
         <div class="col-md-12">
           <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">FORM EDIT</h3>
+          <div class="card shadow-lg rounded-lg border-0">
+            <!-- Card Header -->
+            <div class="card-header bg-dark text-white rounded-t-lg">
+              <h3 class="card-title">Form Edit User</h3>
             </div>
 
+            <!-- Form -->
             <form action="{{ route('updateuser', $user->id) }}" method="POST">
-              <div class="card-body">
+              <div class="card-body p-4">
                 @csrf
+
+                <!-- Nama Field -->
                 <div class="form-group">
-                  <label>Nama</label>
-                  <input type="text" class="form-control" name="nama" value="{{$user->nama}}" placeholder="Input Nama">
+                  <label for="nama" class="font-weight-bold">Nama</label>
+                  <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $user->nama) }}" placeholder="Input Nama" required>
                 </div>
+
+                <!-- NISN Field -->
                 <div class="form-group">
-                  <label>NISN</label>
-                  <input type="number" class="form-control" name="nisn" value="{{$user->nisn}}" placeholder="Input NISN">
+                  <label for="nisn" class="font-weight-bold">NISN</label>
+                  <input type="number" class="form-control" id="nisn" name="nisn" value="{{ old('nisn', $user->nisn) }}" placeholder="Input NISN" required>
                 </div>
 
               </div>
 
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Edit</button>
+              <!-- Submit Button -->
+              <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-4">Edit</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-  </section>
-</div>
+    </div> <!-- /.container-fluid -->
+  </section> <!-- /.content -->
+</div> <!-- /.content-wrapper -->
 
 @endsection
